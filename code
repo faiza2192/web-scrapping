@@ -1,0 +1,13 @@
+pip install requests
+pip install beautifulsoup4
+import requests 
+import re
+from bs4 import BeautifulSoup
+path="https://www.coursera.org/learn/python-for-applied-data-science-ai/"
+page=requests.get(path)
+print(page)
+soup=BeautifulSoup(page.text,'html.parser')
+txt=str(soup)
+print(txt)
+result=re.findall(r'(\d+,?\d+)</span></strong> already enrolled',txt)
+print(result)
